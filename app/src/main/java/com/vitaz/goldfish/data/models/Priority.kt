@@ -1,4 +1,4 @@
-package com.vitaz.goldfish.data
+package com.vitaz.goldfish.data.models
 
 enum class Priority {
     HIGH,

@@ -1,6 +1,7 @@
 package com.vitaz.goldfish.data
 
 import androidx.room.TypeConverter
+import com.vitaz.goldfish.data.models.Priority
 
 class Converter {
 
