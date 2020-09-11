@@ -61,20 +61,23 @@ class AddFragment : Fragment() {
                 mDescription
             )
             mToDoViewModel.insertData(newData)
-            Toast.makeText(requireContext(), "Successfully added!", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), "Successfully added!", Toast.LENGTH_SHORT).show()
 
             // Navigate back
             findNavController().navigate(R.id.action_addFragment_to_listFragment)
         } else {
-            Toast.makeText(requireContext(), "Please fill out all fields!", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), "Please fill out all fields!", Toast.LENGTH_SHORT).show()
         }
 
     }
 
     private fun verifyDataFromUser(title: String, description: String): Boolean {
-        return if(TextUtils.isEmpty(title) || TextUtils.isEmpty(description)) {
-            false
-        } else !(title.isEmpty() || description.isEmpty())
+//        return if(TextUtils.isEmpty(title) || TextUtils.isEmpty(description)) {
+//            false
+//        } else !(title.isEmpty() || description.isEmpty())
+
+        return !(title.isEmpty() || description.isEmpty())
+
     }
 
     private fun parsePriority(priority: String): Priority {
