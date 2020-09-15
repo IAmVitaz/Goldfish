@@ -11,11 +11,13 @@ import com.vitaz.goldfish.R
 import com.vitaz.goldfish.data.models.Priority
 import com.vitaz.goldfish.data.models.ToDoData
 import com.vitaz.goldfish.data.viewmodel.ToDoViewModel
+import com.vitaz.goldfish.fragments.SharedViewModel
 import kotlinx.android.synthetic.main.fragment_add.*
 
 class AddFragment : Fragment() {
 
     private val mToDoViewModel: ToDoViewModel by viewModels()
+    private val mSharedViewModel: SharedViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,14 +52,14 @@ class AddFragment : Fragment() {
         val mPriority = priority_spinner.selectedItem.toString()
         val mDescription = description_et.text.toString()
 
-        val validation = verifyDataFromUser(mTitle, mDescription)
+        val validation = mSharedViewModel.verifyDataFromUser(mTitle, mDescription)
 
         if(validation){
             // Insert data to database
             val newData = ToDoData(
                 0,
                 mTitle,
-                parsePriority(mPriority),
+                mSharedViewModel.parsePriority(mPriority),
                 mDescription
             )
             mToDoViewModel.insertData(newData)
@@ -69,24 +71,6 @@ class AddFragment : Fragment() {
             Toast.makeText(requireContext(), "Please fill out all fields!", Toast.LENGTH_SHORT).show()
         }
 
-    }
-
-    private fun verifyDataFromUser(title: String, description: String): Boolean {
-//        return if(TextUtils.isEmpty(title) || TextUtils.isEmpty(description)) {
-//            false
-//        } else !(title.isEmpty() || description.isEmpty())
-
-        return !(title.isEmpty() || description.isEmpty())
-
-    }
-
-    private fun parsePriority(priority: String): Priority {
-        return when (priority) {
-            "High Priority" -> {Priority.HIGH}
-            "Medium Priority" -> {Priority.MEDIUM}
-            "Low Priority" -> {Priority.LOW}
-            else -> Priority.LOW
-        }
     }
 
 }
