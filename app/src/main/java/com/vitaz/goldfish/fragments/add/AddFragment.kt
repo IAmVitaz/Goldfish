@@ -13,6 +13,7 @@ import com.vitaz.goldfish.data.models.ToDoData
 import com.vitaz.goldfish.data.viewmodel.ToDoViewModel
 import com.vitaz.goldfish.fragments.SharedViewModel
 import kotlinx.android.synthetic.main.fragment_add.*
+import kotlinx.android.synthetic.main.fragment_add.view.*
 
 class AddFragment : Fragment() {
 
@@ -29,6 +30,8 @@ class AddFragment : Fragment() {
 
         //Set Menu
         setHasOptionsMenu(true)
+
+        view.priority_spinner.onItemSelectedListener = mSharedViewModel.listener
 
         return view
 
