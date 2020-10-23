@@ -90,7 +90,7 @@ class UpdateFragment : Fragment() {
         }
         builder.setNegativeButton("No") { _, _ ->}
         builder.setTitle("Delete ${args.currentItem.title}?")
-        builder.setMessage("Are you shure you want to delete '${args.currentItem.title}'")
+        builder.setMessage("Are you sure you want to remove '${args.currentItem.title}'?")
         builder.create().show()
     }
 }
