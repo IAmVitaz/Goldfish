@@ -13,11 +13,15 @@ import com.vitaz.goldfish.data.models.ToDoData
 
 class SharedViewModel(application: Application): AndroidViewModel(application) {
 
+    /** List Fragment */
+
     val emptyDatabase: MutableLiveData<Boolean> = MutableLiveData(true)
 
     fun checkIfDatabaseEmpty(toDoData: List<ToDoData>) {
         emptyDatabase.value = toDoData.isEmpty()
     }
+
+    /** Add/Update Fragment */
 
     val listener: AdapterView.OnItemSelectedListener = object:
         AdapterView.OnItemSelectedListener{
@@ -52,14 +56,6 @@ class SharedViewModel(application: Application): AndroidViewModel(application) {
             "Low Priority" -> {
                 Priority.LOW}
             else -> Priority.LOW
-        }
-    }
-
-    fun parsePriorityToInt(priority: Priority): Int {
-        return when(priority) {
-            Priority.HIGH -> 0
-            Priority.MEDIUM -> 1
-            Priority.LOW -> 2
         }
     }
 
