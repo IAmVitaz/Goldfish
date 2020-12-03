@@ -2,6 +2,7 @@ package com.vitaz.goldfish.fragments.list
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.transition.Slide
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -17,6 +18,7 @@ import com.vitaz.goldfish.data.viewmodel.ToDoViewModel
 import com.vitaz.goldfish.databinding.FragmentListBinding
 import com.vitaz.goldfish.fragments.SharedViewModel
 import com.vitaz.goldfish.fragments.list.adapter.ListAdapter
+import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 
 class ListFragment : Fragment() {
 
@@ -58,6 +60,9 @@ class ListFragment : Fragment() {
         val recyclerView = binding.recyclerView
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireActivity())
+        recyclerView.itemAnimator = SlideInUpAnimator().apply{
+            addDuration = 300
+        }
 
         //Swipe to delete
         swipeToDelete(recyclerView)
