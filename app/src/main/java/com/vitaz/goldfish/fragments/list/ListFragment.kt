@@ -17,6 +17,7 @@ import com.vitaz.goldfish.data.viewmodel.ToDoViewModel
 import com.vitaz.goldfish.databinding.FragmentListBinding
 import com.vitaz.goldfish.fragments.SharedViewModel
 import com.vitaz.goldfish.fragments.list.adapter.ListAdapter
+import com.vitaz.goldfish.utils.hideKeyboard
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 
 class ListFragment : Fragment(), SearchView.OnQueryTextListener {
@@ -49,6 +50,9 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
 
         //Set Menu
         setHasOptionsMenu(true)
+
+        //Hide software keyboard
+        hideKeyboard(requireActivity())
 
 
         return binding.root
